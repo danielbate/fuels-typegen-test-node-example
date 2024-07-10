@@ -1,24 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-fuels`](https://github.com/FuelLabs/fuels-ts/tree/master/packages/create-fuels).
+## Repro steps
+1. `pnpm install`
+1. `pnpm test`
 
-## Getting Started
+## Steps Followed
 
-1. Start the Fuel development server. This server will start a local Fuel node and provide hot-reloading for your smart contracts.
+1. Installed project via [CLI](https://docs.fuel.network/docs/fuels-ts/creating-a-fuel-dapp/) - `pnpm create fuels@0.90.0`
+1. Built contract - `forc build`
+1. Ran typegen `pnpm fuels typegen -i ./sway-programs/contract/out/debug/test-contract-abi.json -o ./src/sway-api`
+1. Added testing dep - `pnpm add -D vitest`
+1. Created a test and run successfully - `test/test-contract.test.ts`
 
-```bash
-pnpm fuels:dev
+```sh
+daniel@MacBook-Pro-5: ~/Documents/Development/Fuel/examples/create-fuels-launch-node main!
+$ pnpm test                                                                                                                                                               [10:22:26]
+
+> template-nextjs@0.1.3 test /Users/daniel/Documents/Development/Fuel/examples/create-fuels-launch-node
+> vitest --run
+
+
+ RUN  v2.0.1 /Users/daniel/Documents/Development/Fuel/examples/create-fuels-launch-node
+
+ ✓ test/test-contract.test.ts (1)
+   ✓ Test Contract (1)
+     ✓ deploy and call
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  10:23:22
+   Duration  1.02s (transform 43ms, setup 0ms, collect 300ms, tests 209ms, environment 0ms, prepare 47ms)
 ```
-
-2. Start the Next.js development server.
-
-```bash
-pnpm dev
-```
-
-## Deploying to Testnet
-
-To learn how to deploy your Fuel dApp to the testnet, you can follow our [Deploying to Testnet](https://docs.fuel.network/docs/fuels-ts/creating-a-fuel-dapp/deploying-a-dapp-to-testnet/) guide.
-
-## Learn More
-
-- [Fuel TS SDK docs](https://docs.fuel.network/docs/fuels-ts/)
-- [Fuel Docs Portal](https://docs.fuel.network/)
